@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weatherly</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/feather-icons"></script>
+    <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#3B82F6',
+                        secondary: '#10B981',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+        .card-hover:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        .vanta-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+    </style>
+</head>
+<body class="min-h-screen bg-gray-50">
+    <div id="vanta-bg" class="vanta-bg"></div>
+    
+    <div class="container mx-auto px-4 py-8">
+        <header class="mb-12">
+            <div class="flex justify-between items-center">
+                <div>
+                    <h1 class="text-4xl font-bold text-gray-800">SkyStats <span class="text-primary">Dashboard</span></h1>
+                    <p class="text-gray-600 mt-2">Real-time weather metrics at your fingertips</p>
+                </div>
+                <div class="flex items-center space-x-2">
+                    <div class="h-10 w-10 rounded-full bg-primary text-white flex items-center justify-center">
+                        <i data-feather="user"></i>
+                    </div>
+                    <span class="font-medium text-gray-700">Admin</span>
+                </div>
+            </div>
+        </header>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+            <!-- Air Quality Card -->
+            <div class="bg-white rounded-xl shadow-md overflow-hidden card-hover">
+                <div class="p-6">
+                    <div class="flex justify-between items-start">
+                        <div>
+                            <h2 class="text-2xl font-semibold text-gray-800">Air Quality</h2>
+                            <p class="text-gray-500 mt-1">Current Index</p>
+                        </div>
+                        <div class="p-3 rounded-lg bg-blue-50 text-primary">
+                            <i data-feather="wind"></i>
+                        </div>
+                    </div>
+                    <div class="mt-6">
+                        <p class="text-4xl font-bold text-gray-800">78 <span class="text-lg font-normal text-gray-500">AQI</span></p>
+                        <div class="flex items-center mt-2">
+                            <span class="text-green-500 flex items-center">
+                                <i data-feather="arrow-up" class="w-4 h-4 mr-1"></i> 2.5%
+                            </span>
+                            <span class="text-gray-500 text-sm ml-2">from yesterday</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-gray-50 px-6 py-4">
+                    <div class="flex justify-between items-center">
+                        <span class="text-sm text-gray-600">Last updated: 10 min ago</span>
+                        <button class="text-primary text-sm font-medium flex items-center">
+                            Details <i data-feather="chevron-right" class="w-4 h-4 ml-1"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Temperature Card -->
+            <div class="bg-white rounded-xl shadow-md overflow-hidden card-hover">
+                <div class="p-6">
+                    <div class="flex justify-between items-start">
+                        <div>
+                            <h2 class="text-2xl font-semibold text-gray-800">Temperature</h2>
+                            <p class="text-gray-500 mt-1">Current Reading</p>
+                        </div>
+                        <div class="p-3 rounded-lg bg-orange-50 text-orange-500">
+                            <i data-feather="thermometer"></i>
+                        </div>
+                    </div>
+                    <div class="mt-6">
+                        <p class="text-4xl font-bold text-gray-800">24° <span class="text-lg font-normal text-gray-500">C</span></p>
+                        <div class="flex items-center mt-2">
+                            <span class="text-red-500 flex items-center">
+                                <i data-feather="arrow-down" class="w-4 h-4 mr-1"></i> 1.2°
+                            </span>
+                            <span class="text-gray-500 text-sm ml-2">from yesterday</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-gray-50 px-6 py-4">
+                    <div class="flex justify-between items-center">
+                        <span class="text-sm text-gray-600">Last updated: 5 min ago</span>
+                        <button class="text-primary text-sm font-medium flex items-center">
+                            Details <i data-feather="chevron-right" class="w-4 h-4 ml-1"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Weather Events Card -->
+            <div class="bg-white rounded-xl shadow-md overflow-hidden card-hover">
+                <div class="p-6">
+                    <div class="flex justify-between items-start">
+                        <div>
+                            <h2 class="text-2xl font-semibold text-gray-800">Weather Events</h2>
+                            <p class="text-gray-500 mt-1">Current Conditions</p>
+                        </div>
+                        <div class="p-3 rounded-lg bg-purple-50 text-purple-500">
+                            <i data-feather="cloud"></i>
+                        </div>
+                    </div>
+                    <div class="mt-6">
+                        <p class="text-4xl font-bold text-gray-800">Clear</p>
+                        <div class="flex items-center mt-4">
+                            <span class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-green-100 text-green-800">
+                                <i data-feather="sun" class="w-4 h-4 mr-1"></i> Sunny
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-gray-50 px-6 py-4">
+                    <div class="flex justify-between items-center">
+                        <span class="text-sm text-gray-600">Last updated: 2 min ago</span>
+                        <button class="text-primary text-sm font-medium flex items-center">
+                            Forecast <i data-feather="chevron-right" class="w-4 h-4 ml-1"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Wind Speed Card -->
+            <div class="bg-white rounded-xl shadow-md overflow-hidden card-hover">
+                <div class="p-6">
+                    <div class="flex justify-between items-start">
+                        <div>
+                            <h2 class="text-2xl font-semibold text-gray-800">Wind Speed</h2>
+                            <p class="text-gray-500 mt-1">Current Measurement</p>
+                        </div>
+                        <div class="p-3 rounded-lg bg-cyan-50 text-cyan-500">
+                            <i data-feather="compass"></i>
+                        </div>
+                    </div>
+                    <div class="mt-6">
+                        <p class="text-4xl font-bold text-gray-800">12 <span class="text-lg font-normal text-gray-500">km/h</span></p>
+                        <div class="flex items-center mt-2">
+                            <span class="text-gray-500 flex items-center">
+                                <i data-feather="arrow-up-right" class="w-4 h-4 mr-1"></i> NNE
+                            </span>
+                            <span class="text-gray-500 text-sm ml-2">direction</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-gray-50 px-6 py-4">
+                    <div class="flex justify-between items-center">
+                        <span class="text-sm text-gray-600">Last updated: 1 min ago</span>
+                        <button class="text-primary text-sm font-medium flex items-center">
+                            Details <i data-feather="chevron-right" class="w-4 h-4 ml-1"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="bg-white rounded-xl shadow-md overflow-hidden mb-8">
+            <div class="px-6 py-4 border-b border-gray-200">
+                <h2 class="text-xl font-semibold text-gray-800">Weather Trends</h2>
+            </div>
+            <div class="p-6">
+                <div class="h-64 bg-gray-100 rounded-lg flex items-center justify-center">
+                    <p class="text-gray-500">Chart visualization will appear here</p>
+                </div>
+            </div>
+        </div>
+
+        <footer class="text-center py-6 text-gray-500 text-sm">
+            <p>© 2023 SkyStats Dashboard. All rights reserved.</p>
+        </footer>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.globe.min.js"></script>
+    <script>
+        VANTA.GLOBE({
+            el: "#vanta-bg",
+            mouseControls: true,
+            touchControls: true,
+            gyroControls: false,
+            minHeight: 200.00,
+            minWidth: 200.00,
+            scale: 1.00,
+            scaleMobile: 1.00,
+            color: 0x3b82f6,
+            backgroundColor: 0xf8fafc,
+            size: 1.00
+        });
+    </script>
+    <script>
+        feather.replace();
+    </script>
+</body>
+</html>
