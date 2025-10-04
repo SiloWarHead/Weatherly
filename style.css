@@ -1,0 +1,101 @@
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;700&display=swap');
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body, html {
+  height: 100%;
+  font-family: 'Ubuntu', sans-serif;
+  background: linear-gradient(135deg, #e3f2fd, #ffffff);
+  color: #333;
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+}
+
+.header {
+  text-align: center;
+  padding: 2rem 1rem;
+  background: #0288d1;
+  color: white;
+}
+
+.header h1 {
+  font-size: 2.5rem;
+  letter-spacing: 2px;
+}
+
+.cards-container {
+  flex: 1;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.5rem;
+  padding: 2rem;
+}
+
+.card {
+  background: white;
+  border-radius: 15px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+  padding: 2rem 1.5rem;
+  text-align: center;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 24px rgba(0,0,0,0.1);
+}
+
+.card .icon {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+
+.card h2 {
+  font-size: 1.4rem;
+  margin-bottom: 0.5rem;
+  color: #0277bd;
+}
+
+.card .value {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #455a64;
+}
+
+.footer {
+  background: #f0f0f0;
+  padding: 1.5rem 1rem;
+}
+
+.footer-content {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.team-name {
+  font-size: 1.7rem;
+  font-weight: 700;
+  color: #0288d1;
+  margin: 0;
+}
+
+.subtext {
+  font-size: 1rem;
+  color: #555;
+  margin: 0;
+}
+
+.footer-content img {
+  height: 50px;
+}
